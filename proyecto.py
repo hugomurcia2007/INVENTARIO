@@ -114,7 +114,7 @@ def mostrar_inventario():
 
 # Crear la ventana principal
 ventana = tk.Tk()
-ventana.title("Inventario de Ferretería")
+ventana.title("Inventario al instante")
 
 # Etiquetas y entradas para nombre, cantidad y precio del producto
 etiqueta_nombre = tk.Label(ventana, text="Nombre del producto:")
