@@ -35,8 +35,20 @@ def actualizar_tabla():
 
 def agregar_producto():
     nombre = entry_nombre.get()
-    cantidad = int(entry_cantidad.get())
-    precio = float(entry_precio.get())
+    
+    # Verificar si los campos de cantidad y precio contienen valores válidos
+    try:
+        cantidad = int(entry_cantidad.get())
+        precio = float(entry_precio.get())
+        
+        # Verificar que sean valores positivos
+        if cantidad <= 0 or precio <= 0:
+            messagebox.showerror("Error", "La cantidad y el precio deben ser valores positivos.")
+            return
+        
+    except ValueError:
+        messagebox.showerror("Error", "Por favor ingrese un valor numérico válido en cantidad y precio.")
+        return
     
     global inventario
     # Verificar si el producto ya existe en el inventario
@@ -67,7 +79,18 @@ def quitar_producto():
 
 def agregar_venta():
     nombre = entry_nombre.get()
-    cantidad = int(entry_cantidad.get())
+    
+    # Verificar si el campo de cantidad contiene un valor válido
+    try:
+        cantidad = int(entry_cantidad.get())
+        
+        # Verificar que la cantidad sea positiva
+        if cantidad <= 0:
+            messagebox.showerror("Error", "La cantidad debe ser un valor positivo.")
+            return
+    except ValueError:
+        messagebox.showerror("Error", "Por favor ingrese un valor numérico válido en cantidad.")
+        return
     
     global inventario, ganancias_totales
     # Verificar si el producto está en el inventario
